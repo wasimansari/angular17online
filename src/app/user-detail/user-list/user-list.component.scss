@@ -1,0 +1,26 @@
+.placeholder{
+    width: 23%;
+    background-color: #ababab;
+    height: 300px;
+    margin: 1%;
+    border-radius:5px;
+}
+
+.card{
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+.card-body{
+    height: 290px !important;
+}
+.card-body a{
+    bottom: 20px;
+    position: absolute;
+}
+.error{
+    width: 23%;
+    background-color: #eb8080;
+    height: 300px;
+    margin: 1%;
+    border-radius:5px ;
+}

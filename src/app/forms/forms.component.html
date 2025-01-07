@@ -1,0 +1,52 @@
+<div class="container">
+<form class="col-md-5" [formGroup]="myForm" (ngSubmit)="onSubmit($event)">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1"
+        />
+
+        @if(myForm.get('email')?.invalid && myForm.get('email')?.touched){
+            @if(myForm.get('email')?.errors?.['required']){
+                <div>Email is required</div>
+            }@else{
+                <div>Invalid email</div>
+            }
+        }
+      <!-- <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
+        <div *ngIf="myForm.get('email')?.errors?.['required']">Email is required.</div>
+        <div *ngIf="myForm.get('email')?.errors?.['email']">Invalid email format.</div>
+      </div> -->
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" formControlName="name" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" formControlName="message" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+
+    @if(isValid){
+        <ul>
+            <li *ngFor="let item of data ; let i= index">
+                {{item.first_name}}
+            </li>
+        </ul>
+        }
+  </form>
+  <form>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">D</span>
+    <input type="text" class="form-control" #userName placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+  </div>
+  
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" #receptName placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <span class="input-group-text" id="basic-addon2">example.com</span>
+  </div>
+  <button class="btn btn-success" (click)="getValue(userName,receptName)">Find</button>
+  <p>{{userName}} or {{receiptName}}</p>
+</form>
+</div>

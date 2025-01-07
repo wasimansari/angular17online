@@ -1,0 +1,27 @@
+<!-- *ngFor="let student of studentList | slice:0:8 ;let i = index;" -->
+<div class="container-fluid">
+  <div class="row">
+    @for(student of studentList; track i; let i = $index){ 
+        @defer{
+                <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">Student : {{ i + 1 }}</div>
+                    <div class="card-body">
+                    <h5 class="card-title">{{ student.title | textTransform : 10 }}</h5>
+                    <p class="card-text">
+                        {{ student.body }}
+                    </p>
+                    <a href="#" class="btn btn-primary">Student : {{ i + 1 }}</a>
+                    </div>
+                </div>
+                </div>
+            }@placeholder {
+                <div class="placeholder">Placeholder</div>
+            }@loading(minimum 2s){
+                <div class="placeholder">Loading....</div>
+            }@error{
+                <div class="error">Error Loading....</div>
+            }
+    }
+  </div>
+</div>

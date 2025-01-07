@@ -1,0 +1,236 @@
+<form [formGroup]="formgroup" (ngSubmit)="onSubmit()" action="">
+  <div class="row mt-4 mb-4">
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="firstName"
+        id="firstName"
+        name="firstName"
+        placeholder="Enter first name"
+      />
+      @if(formgroup.get('firstName')?.invalid && (formgroup.get('firstName')?.touched || formgroup.get('firstName')?.dirty)){
+        @if(formgroup.get('firstName')?.errors?.['required']){
+          <small class="text-danger">Firstname is required</small>
+        }@else{
+          <small class="text-danger">Minimum length is 3.</small>
+
+        }
+      }
+      <!-- <div *ngIf="formgroup.get('firstName')?.invalid && (formgroup.get('firstName')?.touched || formgroup.get('firstName')?.dirty)">
+        <small class="text-danger" *ngIf="formgroup.get('firstName')?.errors?.['required']">Username is required.</small>
+        <small class="text-danger" *ngIf="formgroup.get('firstName')?.errors?.['minlength']">Minimum length is 3.</small>
+      </div> -->
+    </div>
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="lname" class="form-label">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="lastName"
+        id="lname"
+        name="lname"
+        placeholder="Enter last name"
+      />
+      @if(formgroup.get('lastName')?.invalid && (formgroup.get('lastName')?.touched || formgroup.get('lastName')?.dirty)){
+        @if(formgroup.get('lastName')?.errors?.['required']){
+          <small class="text-danger">Last name is required</small>
+        }@else{
+          <small class="text-danger">Minimum length is 3.</small>
+
+        }
+      }
+    </div>
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="fname" class="form-label">Father's Name</label>
+      <input
+        class="form-control"
+        formControlName="fatherName"
+        id="fname"
+        name="fname"
+        placeholder="Enter father name"
+      />
+      @if(formgroup.get('fatherName')?.invalid && (formgroup.get('fatherName')?.touched || formgroup.get('fatherName')?.dirty)){
+        @if(formgroup.get('fatherName')?.errors?.['required']){
+          <small class="text-danger">Father name is required</small>
+        }@else{
+          <small class="text-danger">Minimum length is 3.</small>
+
+        }
+      }
+    </div>
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="mname" class="form-label">Mother's Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="motherName"
+        id="mname"
+        name="mname"
+        placeholder="Enter mother name"
+      />
+      @if(formgroup.get('motherName')?.invalid && (formgroup.get('motherName')?.touched || formgroup.get('motherName')?.dirty)){
+        @if(formgroup.get('motherName')?.errors?.['required']){
+          <small class="text-danger">Mother name is required</small>
+        }@else{
+          <small class="text-danger">Minimum length is 3.</small>
+
+        }
+      }
+    </div>
+  </div>
+  <div class="row mt-4 mb-4">
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="dob" class="form-label">Date Of Birth</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="dob"
+        id="dob"
+        name="dob"
+        placeholder="dd/mm/yyyy"
+      />
+      @if(dob.invalid && (dob.dirty || dob.touched)){
+        <small class="text-danger" *ngIf="dob.errors?.['required']">
+          Date of Birth is required.
+        </small>
+        <small class="text-danger" *ngIf="dob.errors?.['minAge']">
+          You must be at least 10 years old.
+        </small>
+      }
+    </div>
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="gender" class="form-label">Gender</label>
+      <select
+        class="form-select"
+        formControlName="gender"
+        id="gender"
+        name="gender"
+        aria-label="Default select example"
+      >
+        <option selected>Select Gender...</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="mobile" class="form-label">Mobile Number</label>
+      <input
+        type="tel"
+        class="form-control"
+        formControlName="mobile"
+        id="mobile"
+        name="mobile"
+        pattern="[0-9]{10}"
+        maxlength="10"
+        placeholder="Enter 10 digit mobile"
+        required
+      />
+    </div>
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="rollNo" class="form-label">Roll No</label>
+      <input
+        type="text"
+        
+        class="form-control"
+        formControlName="rollNo"
+        id="rollNo"
+        name="rollNo"
+        placeholder="Enter roll no"
+        required
+      />
+    </div>
+  </div>
+  <div class="row mt-4 mb-4">
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        id="email"
+        name="email"
+        placeholder="Enter email id"
+        required
+      />
+    </div>
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password"
+        id="password"
+        name="password"
+        placeholder="Enter password"
+        required
+      />
+      <div *ngIf="formgroup.get('password')?.invalid && formgroup.get('password')?.touched">
+        <small class="text-danger" *ngIf="formgroup.get('password')?.errors?.['required']">Password is required.</small>
+        <small class="text-danger" *ngIf="formgroup.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</small>
+        <small class="text-danger" *ngIf="formgroup.get('password')?.errors?.['alphanumeric']">Password must be alphanumeric.</small>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="className" class="form-label">Choose Class</label>
+      <select
+        class="form-select"
+        formControlName="className"
+        id="className"
+        (change)="selectClass(student_class)"
+        name="className"
+        [(ngModel)]="student_class"
+        aria-label="Default select example"
+      >
+        <option selected>Select Your Class...</option>
+        @for(class of studentClass;track i; let i = $index){
+        <option [value]="class">{{ class }}</option>
+        }
+      </select>
+    </div>
+    @if(isStream){
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="stream" class="form-label">Select Stream</label>
+      <select
+        class="form-select"
+        formControlName="stream"
+        id="stream"
+        name="stream"
+        (change)="selectStream(select_stream)"
+        name="stream"
+        [(ngModel)]="select_stream"
+        aria-label="Default select example"
+      >
+        <option selected>Select Your Class...</option>
+        @for(stream of student_stream;track i; let i = $index){
+        <option [value]="stream">{{ stream }}</option>
+        }
+      </select>
+    </div>
+    } @if(isSubject){
+    <div class="col-sm-6 col-md-3 col-xxl-3">
+      <label for="subject" class="form-label">Select Subject</label>
+      <select
+        class="form-select"
+        formControlName="subject"
+        id="subject"
+        name="subject"
+        (change)="selectSubject(subject)"
+        [(ngModel)]="subject"
+        aria-label="Default select example"
+        id="class"
+      >
+        <option selected>Select Your Test Subject</option>
+        @for(subject of student_Stream_subject;track i; let i = $index){
+        <option [value]="subject">{{ subject }}</option>
+        }
+      </select>
+    </div>
+    }
+    <div class="col-sm-6 col-md-3 col-xxl-3 mt-4">
+      <button class="btn btn-success w-100" [disabled]="formgroup.invalid" id="submit">Submit</button>
+    </div>
+  </div>
+</form>
